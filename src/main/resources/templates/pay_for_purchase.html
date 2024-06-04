@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+
+    <title>Pay for Purchase</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="text-center mt-5 mb-3" th:text="#{pay.for.purchase}"></h2>
+
+            <hr>
+
+            <div class="d-flex mt-4 mb-3 justify-content-between">
+                <h4 id="paymentHelper" style="color: orange" th:text="#{pay.help.msg}"></h4>
+                <h4 th:text="#{total.price} + ' ' + ${cart.totalSum}"></h4>
+            </div>
+            <div>
+                <h4 id="paymentStatus"> <!-- Waiting ... --> </h4>
+                <div th:if="${param.error != null}" style="color: red">
+                    <h5 id="paymentError" th:text="${param.error[0]}" th:unless="${param.error == null}"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 border-left text-center">
+            <button id="cancelButton" type="button" class="dynamicLoadBtnStyles btn-danger btn-lg myBtn mt-3 key-btn"
+                    data-toggle="modal" data-target="#cancelModal" th:text="#{cancel.purchase}"></button>
+            <a th:href="@{/form_purchase}" id="goBackToFormCartLink" class="btn btn-primary btn-lg mt-3 key-btn" th:text="#{go.back.to.form.cart}"></a>
+
+            <!-- MOCK button for imitation and demonstration of possibility to pay via smart cart -->
+            <button type="button" id="successfulMockPaymentButton" class="btn btn-success btn-lg mt-5 key-btn" th:disabled="${cart.totalSum == 0}"
+                    onClick="successHandlerPayment()">Successful Mock Payment</button>
+            <button type="button" id="failMockPaymentButton" class="btn btn-warning btn-lg mt-3 key-btn" th:disabled="${cart.totalSum == 0}"
+                    onClick="failHandlerPayment()">Fail Mock Payment</button>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/cancel_purchase_dialog :: body}"></div>
+
+<script>
+    function successHandlerPayment() {
+        handlePayment(successPayment);
+    }
+
+    function failHandlerPayment() {
+        handlePayment(failPayment);
+    }
+
+    function handlePayment(resultFunction) {
+        disableButtons();
+        let errorField = document.getElementById('paymentError');
+        if (errorField != null) {
+            errorField.innerText = "";
+        }
+        document.getElementById('paymentHelper').style.color = 'green';
+        document.getElementById('paymentStatus').innerText = "[[#{waiting.msg}]] ";
+        const dots = setInterval(function() {
+            document.getElementById('paymentStatus').innerText = document.getElementById('paymentStatus').innerText + '.';
+        }, 1000);
+        let completedDots = 0;
+        const wait = setInterval(function() {
+            completedDots++;
+            if (completedDots === 5) {
+                clearInterval(wait);
+                clearInterval(dots);
+                resultFunction();
+            }
+        }, 1000);
+    }
+
+    function disableButtons() {
+        // Disable select locale form
+        document.getElementById('selectLocale').disabled = true;
+        document.getElementById('selectLocaleButton').disabled = true;
+
+        // Disable the 'Cancel Purchase' button
+        document.getElementById('cancelButton').disabled = true;
+
+        // Disable the 'Go back to Form Cart' button
+        const link = document.getElementById('goBackToFormCartLink');
+        let button = document.createElement("button");
+        for (let i = 0; i < link.attributes.length; i++) {
+            let attr = link.attributes.item(i);
+            button.setAttribute(attr.name, attr.value);
+        }
+        button.innerHTML = link.innerHTML;
+        button.disabled = true;
+        link.parentNode.replaceChild(button, link);
+
+        // Disable the 'Mock Payment' button
+        document.getElementById('successfulMockPaymentButton').disabled = true;
+        document.getElementById('failMockPaymentButton').disabled = true;
+    }
+
+    function successPayment() {
+        $.post("/pay_for_purchase")
+            .fail(function(error) {
+                console.error(`Failed to pay for the order. Error: ${error}`);
+            });
+        document.getElementById('paymentStatus').innerText = '[[#{successfully.msg}]]';
+        document.getElementById('paymentStatus').style.color = 'green';
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 3000);
+    }
+
+    function failPayment() {
+        window.location.href = "/pay_for_purchase?error=[[#{payment.error.msg}]]";
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.dynamicLoadBtnStyles').addClass('btn');
+    });
+</script>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

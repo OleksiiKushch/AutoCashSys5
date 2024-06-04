@@ -1,0 +1,19 @@
+databaseChangeLog:
+
+  # Import project data
+
+  - changeSet:
+      id: fill_products_table
+      author: admin
+      changes:
+        - loadData:
+            tableName: products
+            file: db/data/project/products.csv
+
+  - changeSet:
+      id: fill_employees_table
+      author: admin
+      changes:
+        - loadData:
+            tableName: employees
+            file: db/data/project/employees.csv

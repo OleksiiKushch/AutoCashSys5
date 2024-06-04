@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: AutoCashSys
+
+  messages:
+    basename: lang/messages
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3307/auto_cash_sys}
+    username: root
+    password: toor
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+
+  liquibase:
+    change-log: classpath:db/changelog/main-changelog.yaml
+
+auto-cash-sys:
+  default-img-src:
+    product: img/products/default.png

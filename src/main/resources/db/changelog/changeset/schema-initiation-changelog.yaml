@@ -1,0 +1,194 @@
+databaseChangeLog:
+
+  # Create tables
+
+  - changeSet:
+      id: create_products_table
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: true
+                  name: image_src
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: manufacturer
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                    checkConstraint: price >= 0
+                  name: price
+                  type: DECIMAL(9, 2)
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: barcode
+                  type: VARCHAR(128)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_required_verification
+                  type: BOOLEAN
+            tableName: products
+
+  - changeSet:
+      id: create_employees_table
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(255)
+            tableName: employees
+
+  - changeSet:
+      id: create_receipts_table
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_receipts
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: approver_id
+                  type: INT
+            tableName: receipts
+
+  - changeSet:
+      id: create_cart_entries_table
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_receipts
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: receipt_id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: product_id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    checkConstraint: unit_price >= 0
+                  name: amount
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    checkConstraint: unit_price >= 0
+                  name: unit_price
+                  type: DECIMAL(9, 2)
+            tableName: cart_entries
+
+  # Add constraints
+
+  # Add unique constraints
+
+  # ...
+
+  # Add foreign key constraints
+
+  - changeSet:
+      id: add_fk_receipts_on_employee
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: approver_id
+            baseTableName: receipts
+            constraintName: FK_RECEIPTS_ON_EMPLOYEE
+            referencedColumnNames: id
+            referencedTableName: employees
+
+  - changeSet:
+      id: add_fk_cart_entries_on_receipts
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: receipt_id
+            baseTableName: cart_entries
+            constraintName: FK_CART_ENTRIES_ON_RECEIPTS
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: receipts
+
+  - changeSet:
+      id: add_fk_cart_entries_on_products
+      author: admin
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: cart_entries
+            constraintName: FK_CART_ENTRIES_ON_PRODUCTS
+            referencedColumnNames: id
+            referencedTableName: products

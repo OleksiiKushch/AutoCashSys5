@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header class="bg-dark text-white p-3">
+
+    <nav class="navbar">
+
+        <h1 th:text="${title}">Logo</h1>
+
+        <ul class="nav navbar-nav">
+            <li>
+                <form class="text-center">
+                    <label for="selectLocale" class="form-label" th:text="#{header.select.locale}"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" id="selectLocaleButton" class="btn btn-primary" style="padding: 0.2rem 0.35rem 0.1rem;"
+                                    onclick="changeLocale()">
+                                <img class="change-locale-icon" th:src="@{'/img/general/change_locale_icon.svg'}" alt="">
+                            </button>
+                        </div>
+                        <select id="selectLocale" class="form-control" style="width: auto;">
+                            <option th:each="locale : ${availableLocales}" th:value="${locale.key}" th:text="${locale.value}"
+                                    th:selected="${locale.key eq #locale.language} ? 'selected'">
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </li>
+        </ul>
+
+    </nav>
+
+    <script th:src="@{/js/change.locale.js}"></script>
+
+</header>
+</body>
+</html>

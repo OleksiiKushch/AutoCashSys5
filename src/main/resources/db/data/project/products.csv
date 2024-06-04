@@ -1,0 +1,49 @@
+id,image_src,name,manufacturer,price,barcode,is_required_verification
+1,img/products/1.jpg,"Milk 'Zarechye' 2.0 litre",GreatValue,3.5,56573530,FALSE
+2,img/products/2.jpg,"Bananas 12.0 kg",Chiquita,0.5,56573531,FALSE
+3,img/products/3.jpg,"Apples 'Crispy' 8.0 kg",FreshFarm,0.8,89722116,FALSE
+4,img/products/4.jpg,"Coke 'Classic' 1.5 litre",Coca-Cola,1.5,65434521,FALSE
+5,,"Bread 'Whole Wheat'",Baker'sDelight,1.3,75325444,FALSE
+6,img/products/6.jpg,"Eggs 'Organic' 12.0 pieces",FreeRange,2.5,89745632,FALSE
+7,img/products/7.jpg,"Rice 'Basmati' 2.0 kg",GoldenCrown,1.32,55437876,FALSE
+8,,"Beans 'Black' 1.0 kg",Heinz,1.21,75384553,FALSE
+9,,"Toothpaste 'Max Fresh' 0.2 litre",Colgate,3.0,89874563,FALSE
+10,img/products/10.jpg,"Soap 'Moisturizing'",Dove,1.5,56547832,FALSE
+11,,"Flour 'All Purpose' 5.0 kg",KingArthur,2.0,34576332,FALSE
+12,img/products/12.jpg,"Yogurt 'Greek' 1.0 litre",Yoplait,1.1,46557543,FALSE
+13,,"Pasta 'Spaghetti' 1.5 kg",Barilla,1.7,89656342,FALSE
+14,img/products/14.jpg,"Olive Oil 'Extra Virgin' 1.0 litre",Filio,5.5,79845212,FALSE
+15,img/products/15.jpg,"Tomato Sauce 'Marinara' 0.5 litre",Ragu,1.2,87452114,FALSE
+16,,"Tuna 'Albacore' 0.2 pieces",BumbleBee,2.6,12345678,FALSE
+17,img/products/17.jpg,"Cheese 'Cheddar' 0.5 kg",Kraft,3.7,98765432,FALSE
+18,img/products/18.jpg,"Mayonnaise 'Provençal' 0.3 litre",HamptonCreek,2.5,65478421,FALSE
+19,img/products/19.jpg,"Orange Juice 'Pulp Free' 1.0 litre",Tropicana,2.8,15423265,FALSE
+20,,"Biscuits 'Chocolate Chip' 0.5 pieces",Nabisco,1.5,45678912,FALSE
+21,,"Mustard 'Dijon' 0.25 litre",French's,1.8,78965423,FALSE
+22,img/products/22.jpg,"Ketchup 'Mild' 0.5 litre",Heinz,2.0,32165478,FALSE
+23,img/products/23.jpg,"Sugar 'Granulated' 1.0 kg",Domino,1.3,12365479,FALSE
+24,,"Chicken Breast 'Free Range' 0.8 kg",Perdue,4.5,87452216,FALSE
+25,img/products/25.jpg,"Ice Cream 'Vanilla' 1.0 litre",Breyers,3.0,89587462,FALSE
+26,,"Potatoes 'Russet' 3.0 kg",Idahoan,1.2,85478624,FALSE
+27,img/products/27.jpg,"Beef 'Grass-Fed' 1.0 kg",Butcher'sChoice,6.0,12548796,FALSE
+28,,"Peanut Butter 'Smooth' 0.5 litre",Jif,2.7,75128114,FALSE
+29,img/products/29.jpg,"Chips 'Classic' 0.2 pieces",Lays,1.2,89632148,FALSE
+30,,"Cereal 'Corn Flakes' 0.75 kg",Kellogg's,2.9,85691475,FALSE
+31,img/products/31.jpg,"Ketchup 'Spicy' 0.5 litre",Heinz,2.2,56533532,FALSE
+32,img/products/32.jpg,"Ketchup 'Smokey Barbecue' 0.5 litre",Heinz,2.4,89722113,FALSE
+33,img/products/33.jpg,"Ketchup 'Bavarian' 1.0 litre",Heinz,2.0,75325447,FALSE
+34,img/products/34.jpg,"Ketchup 'Mild' 1.5 litre",Heinz,2.0,55227870,FALSE
+35,img/products/35.jpg,"Ketchup 'Spicy' 2.0 litre",Heinz,2.2,12265439,FALSE
+36,img/products/36.jpg,"Mayonnaise 'Garlic' 0.3 litre",HamptonCreek,2.8,98765421,FALSE
+37,img/products/37.jpg,"Milk 'Skim' 1.0 litre",GreatValue,2.5,87654321,FALSE
+38,img/products/38.jpg,"Ketchup 'Smokey Barbecue' 2.0 litre",Heinz,2.8,76543210,FALSE
+39,img/products/39.jpg,"Yogurt 'Greek' 2.0 litre",Yoplait,1.5,65432109,FALSE
+40,img/products/40.jpg,"Beef 'Angus' 2.0 kg",Butcher'sChoice,10.0,54321098,FALSE
+41,img/products/41.jpg,White Sugar,Domino,1.5,78946456,FALSE
+42,img/products/42.jpg,White Beer (for 1 liter),Heineken,3.0,87945652,TRUE
+43,img/products/43.jpg,Black Beer (for 1 liter),Guinness,3.5,79645213,TRUE
+44,,Red Wine (for 250 liter),Robert Mondavi,15.0,85274196,TRUE
+45,img/products/45.jpg,Olive Oil 'Extra Virgin' (for 1 liter),Filio,10.0,96325874,FALSE
+46,,Rolled Oats (for 1 kilogram),Quaker,1.8,78965466,FALSE
+47,img/products/47-48.jpg,Granola (for 100 gram),Kellogg's,2.0,89637748,FALSE
+48,img/products/47-48.jpg,White Rice (for 1 kilogram),GreatValue,1.0,87882118,FALSE

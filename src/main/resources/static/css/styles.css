@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+}
+
+.main-container {
+    max-width: 75%;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background: #333 linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.border-left {
+    border-left: 2px solid;
+    border-image: linear-gradient(to bottom,  #ccc, #333, #ccc) 1;
+}
+
+.really-big-btn {
+    font-size: 4rem;
+    padding: 2rem 4rem;
+}
+
+.key-btn {
+    width: 150px;
+}
+
+.small-product-img {
+    width: 50px;
+    height: 50px;
+}
+
+.change-locale-icon {
+    width: 30px;
+    height: 30px;
+}
+
+th {
+    font-size: 12px;
+}

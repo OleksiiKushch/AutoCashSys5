@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalCenterTitle" th:text="#{dialog.warning}"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Here a help message (warning) on deleting product in the cart -->
+                <h6 id="modalBodyDeleteForm"></h6>
+            </div>
+            <div class="modal-footer">
+                <form method="POST" th:action="@{/delete_from_cart}">
+                    <input id="deleteFormProductId" th:name="barcode" value="" type="hidden">
+                    <button type="button" class="dynamicLoadBtnStyles btn-secondary" data-dismiss="modal" th:text="#{dialog.no}"></button>
+                    <button type="submit" class="btn btn-danger" th:text="#{dialog.yes}"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalCenterTitle" th:text="#{dialog.edit.cart.form}"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Here a help message (form) on editing product in the cart -->
+                <h6 id="modalBodyEditForm"></h6>
+            </div>
+            <div class="modal-footer">
+                <form method="POST" th:action="@{/edit_cart}" class="was-validated">
+                    <input id="editFormProductId" th:name="barcode" value="" type="hidden">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="submit" class="input-group-text mb-3 btn btn-outline-success" th:text="#{action.edit}"></button>
+                        </div>
+                        <label for="inputAmountEdit"></label>
+                        <input type="number" id="inputAmountEdit" class="form-control is-invalid"
+                               min="1" step="1" th:name="amount" value="" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
