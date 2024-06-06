@@ -30,7 +30,7 @@
             <div>
                 <h4 id="paymentStatus"> <!-- Waiting ... --> </h4>
                 <div th:if="${param.error != null}" style="color: red">
-                    <h5 id="paymentError" th:text="${param.error[0]}" th:unless="${param.error == null}"></h5>
+                    <h5 id="paymentError" th:text="#{${param.error[0]}}" th:unless="${param.error == null}"></h5>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
     }
 
     function failPayment() {
-        window.location.href = "/pay_for_purchase?error=[[#{payment.error.msg}]]";
+        window.location.href = "/pay_for_purchase?error=payment.error.msg";
     }
 </script>
 
