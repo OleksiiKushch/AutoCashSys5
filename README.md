@@ -12,3 +12,6 @@
 
 ### Additional information
 Link to ER-Diagram: [here](er-diagram.PNG)
+
+## Demo
+Video on YouTube: [here](https://youtu.be/LjY032Fc10M?si=eWbd92zVknxq8P9K)
