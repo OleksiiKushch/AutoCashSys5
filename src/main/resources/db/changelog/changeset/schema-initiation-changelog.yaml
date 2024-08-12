@@ -150,10 +150,6 @@ databaseChangeLog:
 
   # Add constraints
 
-  # Add unique constraints
-
-  # ...
-
   # Add foreign key constraints
 
   - changeSet:
