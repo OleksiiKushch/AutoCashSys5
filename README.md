@@ -11,7 +11,7 @@
 [MySQL Community Server 8.4.0 LTS](https://dev.mysql.com/downloads/mysql/)
 
 ### Additional information
-Link to ER-Diagram: [here](er-diagram.PNG)
+Link to ER-Diagram: [here](er-diagram.png)
 
 ## Demo
 Video on YouTube: [here](https://youtu.be/LjY032Fc10M?si=eWbd92zVknxq8P9K)
